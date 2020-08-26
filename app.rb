@@ -34,7 +34,7 @@ configure do
 end
 
 get '/' do
-    erb "Hello!"			
+    erb :index			
 end
 
 # обработчик get-запроса /new
@@ -54,6 +54,8 @@ post '/new' do
   		@error = 'Type post text'
   		return erb :new
   end
+
+  # сохранение данных в БД
 
   @db.execute 'insert into Posts (content, created_date) values (?, datetime())', [content]
 
